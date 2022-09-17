@@ -56,7 +56,6 @@ def checkColorPosition(boxes, color):
             return boxes.index(box)
     return False
 
-# Teacher Activity
 def movePlayer1(steps):
     global leftBoxes
 
