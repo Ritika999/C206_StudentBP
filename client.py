@@ -98,43 +98,7 @@ def movePlayer1(steps):
 def movePlayer2(steps):
     global rightBoxes
 
-    # Moving to reverse order
-    tempBoxes = rightBoxes[-2::-1]
-
-    boxPosition = checkColorPosition(tempBoxes,"yellow")
-
-    if(boxPosition):
-        diceValue = steps
-        coloredBoxIndex = boxPosition
-        totalSteps = 10
-        remainingSteps = totalSteps - coloredBoxIndex
-
-        if(diceValue == remainingSteps):
-            for box in rightBoxes[-2::-1]:
-                box.configure(bg='white')
-
-            global finishingBox
-
-            finishingBox.configure(bg='yellow', fg="black")
-
-            global SERVER
-            global playerName
-
-            greetMessage = f'Yellow wins the game.'
-            SERVER.send(greetMessage.encode())
-
-        elif(diceValue < remainingSteps):
-            for box in rightBoxes[-2::-1]:
-                box.configure(bg='white')
-
-            nextStep = (coloredBoxIndex + 1 ) + diceValue
-            rightBoxes[::-1][nextStep].configure(bg='yellow')
-        else:
-            print("Move False")
-    else:
-        # first step
-        rightBoxes[len(rightBoxes) - (steps+1)].configure(bg='yellow')
-
+    
 def rollDice():
     global SERVER
     #create a number variable in which the list of all the ASCII characters of the string will be stored
